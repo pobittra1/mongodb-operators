@@ -1,0 +1,176 @@
+{
+    "_comment": "Query using $and operator",
+    "$and": {
+      "_comment": "Find documents where gender is Female and age is less than or equal to 18",
+      "query": {
+        "gender": "Female",
+        "age": { "$lte": 18 }
+      },
+      "_comment": "Project only gender and age fields",
+      "projection": {
+        "gender": 1,
+        "age": 1
+      },
+      "_comment": "Sort the results by age in ascending order",
+      "sort": { "age": 1 }
+    },
+  
+    "_comment": "Query using $or operator",
+    "$or": {
+      "_comment": "Find documents where age is equal to 18",
+      "query": {
+        "age": { "$eq": 18 }
+      },
+      "_comment": "Project age and gender fields",
+      "projection": {
+        "age": 1,
+        "gender": 1
+      }
+    },
+  
+    "_comment": "Query using $exists operator",
+    "$exists": {
+      "_comment": "Find documents where age field does not exist",
+      "false": {
+        "age": 1
+      },
+      "_comment": "Find documents where age field exists",
+      "true": {
+        "age": 1
+      }
+    },
+  
+    "_comment": "Query using $type operator",
+    "$type": {
+      "_comment": "Find documents where age field is of type string",
+      "string": {
+        "age": 1
+      },
+      "_comment": "Find documents where age field is of type null",
+      "null": {
+        "age": 1
+      }
+    },
+  
+    "_comment": "Query using $size operator",
+    "$size": {
+      "_comment": "Find documents where interests array has a size of 2",
+      "query": {
+        "interests": { "$size": 2 }
+      },
+      "_comment": "Project interests field",
+      "projection": {
+        "interests": 1
+      }
+    },
+  
+    "_comment": "Query for finding documents by array value",
+    "get by array position for first position": {
+      "_comment": "Find documents where interests array contains 'Travelling'",
+      "query": {
+        "interests": "Travelling"
+      }
+    },
+  
+    "_comment": "Query using $all operator",
+    "$all": {
+      "_comment": "Find documents where interests array contains both 'Travelling' and 'Cooking'",
+      "query": {
+        "interests": { "$all": ["Travelling", "Cooking"] }
+      },
+      "_comment": "Project interests field",
+      "projection": {
+        "interests": 1
+      }
+    },
+  
+    "_comment": "Query using $elemMatch operator",
+    "$elemMatch": {
+      "_comment": "Find documents where skills array contains an object with name 'JAVASCRIPT' and level 'Expert'",
+      "query": {
+        "skills": { "$elemMatch": { "name": "JAVASCRIPT", "level": "Expert" } }
+      },
+      "_comment": "Project skills field",
+      "projection": {
+        "skills": 1
+      }
+    },
+  
+    "_comment": "Update operation using $set operator",
+    "$set": {
+      "_comment": "Update document with specified _id and set phone field to '01700000'",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$set": {
+          "phone": "01700000"
+        }
+      }
+    },
+  
+    "_comment": "Update operation using $addToSet operator",
+    "$addToSet with each- its can'nt duplicate assign value": {
+      "_comment": "Update document with specified _id and add 'hira' and 'sira' to languages array without duplicates",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$addToSet": {
+          "languages": { "$each": ["hira", "sira"] }
+        }
+      }
+    },
+  
+    "_comment": "Update operation using $push operator",
+    "$push with each": {
+      "_comment": "Update document with specified _id and add 'simu' and 'dimu' to languages array",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$push": { "languages": { "$each": ["simu", "dimu"] } }
+      }
+    },
+  
+    "_comment": "Update operation using $unset operator",
+    "$unset": {
+      "_comment": "Update document with specified _id and unset phone field",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$unset": { "phone": "" }
+      }
+    },
+  
+    "_comment": "Update operation using $pop operator",
+    "$pop": {
+      "_comment": "Update document with specified _id and remove last element from languages array",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$pop": { "languages": 1 }
+      }
+    },
+  
+    "_comment": "Update operation using $pull operator",
+    "$pull": {
+      "_comment": "Update document with specified _id and remove 'ajaira' from skills array",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$pull": { "skills": "ajaira" }
+      }
+    },
+  
+    "_comment": "Update operation using $pullAll operator",
+    "$pullAll": {
+      "_comment": "Update document with specified _id and remove specified values from languages array",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$pullAll": { "languages": [["ajaira", "badini"], "hira", "sira", "simu"] }
+      }
+    },
+  
+    "_comment": "Update operation to set element in array using array index",
+    "$set elemens in array": {
+      "_comment": "Update document with specified _id and set first element of languages array to 'police'",
+      "update": {
+        "_id": "6406ad64fc13ae5a40000083",
+        "$set": { "languages.0": "police" }
+      }
+    }
+  
+
+  
